@@ -1,0 +1,41 @@
+<mat-toolbar id="toolbar">
+    <button class="btn" type="submit" (click)="voltar()" mat-raised-button color="primary">Ver pacientes</button>
+    <button class="btn" type="submit" (click)="sair()" mat-raised-button color="warn">Sair</button>
+</mat-toolbar>
+
+
+<div id="container-historico">
+    <div>
+        <mat-card class="mat-card-paciente">
+            <mat-card-header>
+                <h2>Dados do paciente:</h2>
+            </mat-card-header>
+            <mat-card-content>
+                <p>Nome: {{nomePaciente}}</p>
+                <p>CPF: {{cpfPaciente}}</p>
+                <p>Data de Nascimento: {{dataNascimentoPaciente.split("-")[2] + "/" + dataNascimentoPaciente.split("-")[1] + "/" + dataNascimentoPaciente.split("-")[0]}} </p>
+            </mat-card-content>
+        </mat-card>
+
+        <div id="container-receitas">
+            <h2>Histórico: </h2>
+
+            <div id="resultados">
+                <div *ngFor="let receita of receitas">
+                    <mat-card class="mat-card-receitas">
+                        <mat-card-header>
+                            <h2>Código consulta: {{ receita.id }}</h2>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <p>CRM: {{ receita.crm_medico }}</p>
+                            <p>Data da Prescrição: {{ receita.dataprescricao.split("-")[2] + "/" + receita.dataprescricao.split("-")[1] + "/" + receita.dataprescricao.split("-")[0] }}</p>
+                        </mat-card-content>
+
+                        <button class="btn btn-verMedicamentos" (click)="verMedicamentos(receita.id)" type="submit" mat-raised-button color="primary">Ver medicamentos</button>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

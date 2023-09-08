@@ -1,0 +1,64 @@
+#toolbar{
+    display: flex;
+    justify-content: end;
+}
+
+#toolbar .btn{
+    margin-right: 2vh;
+}
+
+
+#container-medicos{
+    background-image: url("../../assets/atendimento.webp");
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
+.example-full-width{
+    margin-left: 1vh;
+}
+
+#btn-buscar{
+    margin-left: 1vh;
+    margin-top: -2.5vh;
+    height: 6vh;
+    width: 20vh;
+}
+
+.mat-card-paciente{
+    background-color: rgba(255, 255, 255, 0.662);
+    margin-top: 2vh;
+    display: flex;
+    flex-direction: row;
+    flex-direction: row;
+}
+
+.btn-atendimento{
+    margin-top: 20%;
+    margin-left: 2vh;
+    margin-right: 3vh;
+}
+
+.card-esq{
+    width: 60%;
+}
+
+.card-dir{
+    width: 40%;
+}
+
+.btn-group{
+    display: flex;
+    flex-direction: row;
+}
+
+#resultados{
+    height: 70vh;
+    overflow: auto;
+}

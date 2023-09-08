@@ -1,0 +1,60 @@
+#toolbar{
+    display: flex;
+    justify-content: end;
+}
+
+#toolbar .btn{
+    margin-right: 2vh;
+}
+
+
+#container-atendimento{
+    background-image: url("../../assets/atendimento.webp");
+    height: 89.8vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
+.mat-card-paciente{
+    height: 22vh;
+}
+
+#resultados{
+    margin-top: 2vh;
+    height: 45vh;
+    overflow: auto;
+}
+
+.mat-card-medicamento{
+    background-color: rgba(255, 255, 255, 0.662);
+    margin-top: 1vh;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+#container-medicamentos{
+    margin-top: 2vh;
+    width: 50vh;
+}
+
+.title-prescrever{
+    margin-top: 2vh;
+}
+
+.ld-esq{
+    width: 70%;
+}
+
+.ld-dir{
+    width: 30%;
+}
+
+.btn-finaliza{
+    margin-top: 5vh;
+}

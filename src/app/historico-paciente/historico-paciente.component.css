@@ -1,0 +1,64 @@
+#toolbar{
+    display: flex;
+    justify-content: end;
+}
+
+#toolbar .btn{
+    margin-right: 2vh;
+}
+
+
+#toolbar{
+    display: flex;
+    justify-content: end;
+}
+
+#toolbar .btn{
+    margin-right: 2vh;
+}
+
+
+#container-historico{
+    background-image: url("../../assets/atendimento.webp");
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
+#resultados{
+    margin-top: 2vh;
+    height: 50vh;
+    overflow: auto;
+}
+
+.mat-card-receitas{
+    height: max-content;
+    background-color: rgba(255, 255, 255, 0.662);
+    margin-top: 1vh;
+}
+
+#container-receitas{
+    margin-top: 2vh;
+    width: 50vh;
+}
+
+.title-prescrever{
+    margin-top: 2vh;
+}
+
+.ld-esq{
+    width: 70%;
+}
+
+.ld-dir{
+    width: 30%;
+}
+
+.btn-verMedicamentos{
+    margin: 3vh;
+}

@@ -1,0 +1,57 @@
+<mat-toolbar id="toolbar">
+  <button class="btn" type="submit" (click)="registrarRemedio()" mat-raised-button color="primary">Registrar
+    remédio</button>
+  <button class="btn" type="submit" (click)="sair()" mat-raised-button color="warn">Sair</button>
+</mat-toolbar>
+
+<div id="container-medicos">
+
+  <div>
+    <div class="filtros">
+      <mat-form-field class="example-full-width">
+        <mat-label>Cpf</mat-label>
+        <input class="cp-ipt" matInput type="text" id="cpf" name="cpf" [(ngModel)]="cpf">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Nome</mat-label>
+        <input class="cp-ipt" matInput type="text" id="nome" name="nome" [(ngModel)]="nome">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Data Nascimento</mat-label>
+        <input class="cp-ipt" matInput type="date" id="dtNascimento" name="dtNascimento" [(ngModel)]="dtNascimento">
+      </mat-form-field>
+
+      <button id="btn-buscar" type="submit" (click)="getPacientes()" mat-raised-button color="warn">Buscar</button>
+    </div>
+
+
+    <div id="resultados">
+      <div *ngFor="let paciente of pacientes">
+
+        <mat-card class="mat-card-paciente">
+          <div class="card-esq">
+            <mat-card-header>
+              <h2>{{ paciente.nome }}</h2>
+            </mat-card-header>
+            <mat-card-content>
+              <p>CPF: {{ paciente.cpf }}</p>
+              <p>Data de Nascimento: {{ paciente.datanascimento.split("-")[2] + "/" + paciente.datanascimento.split("-")[1] + "/" + paciente.datanascimento.split("-")[0] }}</p>
+            </mat-card-content>
+          </div>
+          <div class="card-dir">
+            <div class="btn-group">
+              <button class="btn-atendimento" type="submit" (click)="historicoPaciente(paciente.cpf)" mat-raised-button color="warn">Ver histórico</button>
+              <button class="btn-atendimento" type="submit" (click)="atenderPaciente(paciente.cpf)" mat-raised-button
+                color="primary">Atender</button>
+            </div>
+          </div>
+
+        </mat-card>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</div>

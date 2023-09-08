@@ -1,0 +1,27 @@
+<div class="login-container">
+    <div>
+        <div class="container-titulo">
+            <h2 id="titleLogin">Login</h2>
+        </div>
+        <form>
+            <div class="form-group">
+                <mat-form-field class="example-full-width">
+                    <mat-label>CRM ou CPF</mat-label>
+                    <input class="cp-ipt" matInput type="text" id="username" name="username" [(ngModel)]="username">
+                </mat-form-field>
+
+            </div>
+            <div class="form-group">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Senha</mat-label>
+                    <input class="cp-ipt" matInput type="password" id="password" name="password" [(ngModel)]="password">
+                </mat-form-field>
+            </div>
+
+            <div class="container-btn">
+                <button type="submit" (click)="login()" mat-raised-button color="primary">Entrar</button>
+                <button type="submit" (click)="registrar()" mat-raised-button color="warn">Registrar</button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+#toolbar {
+    display: flex;
+    justify-content: end;
+}
+
+#toolbar .btn {
+    margin-right: 2vh;
+}
+
+#container-medicamentos {
+    background-image: url("../../assets/atendimento.webp");
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 3vh;
+}
+
+
+.container-btn {
+    display: flex;
+    justify-content: space-around;
+}
+
+.container-titulo {
+    display: flex;
+    justify-content: center;
+}
+
+.form-group {
+    width: 40vh;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.title {
+    font-size: xx-large;
+    font-family: serif;
+}
