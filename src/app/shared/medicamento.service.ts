@@ -29,8 +29,14 @@ export class MedicamentoService {
     }
 
     
-    getMedicamentos(): Observable<any> {
+    getMedicamentos(jwt: string): Observable<any> {
+        const httpOptions = {
+            headers: new HttpHeaders({
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${jwt}` // Adicione o token de autorização Bearer
+            }),
+        };
         const url = 'http://localhost:3000/v1/medicamento/findAll';
-        return this.http.get(url);
+        return this.http.get(url, httpOptions);
     }
 }

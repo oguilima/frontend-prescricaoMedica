@@ -1,6 +1,7 @@
 import { Component, OnInit  } from '@angular/core';
 import { Router } from '@angular/router';
 import { PacienteService } from '../shared/paciente.service';
+import { AuthService } from '../shared/cookie.service';
 
 @Component({
   selector: 'app-medicos',
@@ -8,7 +9,7 @@ import { PacienteService } from '../shared/paciente.service';
   styleUrls: ['./medicos.component.css']
 })
 export class MedicosComponent implements OnInit {
-  constructor(private router: Router, private pacienteService: PacienteService) { }
+  constructor(private router: Router, private pacienteService: PacienteService,  private authService: AuthService) { }
 
   cpf: string = ""
   nome: string = ""
@@ -21,7 +22,8 @@ export class MedicosComponent implements OnInit {
   }
 
   getPacientes(): void {
-    this.pacienteService.getPacientes(this.cpf, this.nome, this.dtNascimento).subscribe(
+    const jwt = this.authService.getJwt()
+    this.pacienteService.getPacientes(jwt, this.cpf, this.nome, this.dtNascimento).subscribe(
       (data) => {
         this.pacientes = data; 
       },

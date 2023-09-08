@@ -38,7 +38,9 @@ export class AtendimentoComponent implements OnInit {
   }
 
   getMedicamentos(): void {
-    this.medicamentoService.getMedicamentos().subscribe(
+    const jwt = this.cookieService.getJwt()
+
+    this.medicamentoService.getMedicamentos(jwt).subscribe(
       (data) => {
         this.medicamentos = data;
       },
@@ -52,7 +54,9 @@ export class AtendimentoComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const cpf = params['cpf'];
       if (cpf) {
-        this.pacienteService.getPacientesPcpf(cpf).subscribe(
+        const jwt = this.cookieService.getJwt()
+
+        this.pacienteService.getPacientesPcpf(jwt, cpf).subscribe(
           (data) => {
             this.nomePaciente = data.nome
             this.cpfPaciente = data.cpf
@@ -107,7 +111,7 @@ export class AtendimentoComponent implements OnInit {
           const codigosPrescritos = this.arrCodigos
 
 
-          this.prescricaoService.registrarPrescricao(cpf, crm, dataPrescricao, codigosPrescritos).subscribe(
+          this.prescricaoService.registrarPrescricao(jwt, cpf, crm, dataPrescricao, codigosPrescritos).subscribe(
             (data) => {
               Swal.fire(
                 'Sucesso!',

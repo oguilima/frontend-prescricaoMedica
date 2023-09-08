@@ -9,6 +9,7 @@ export class PrescricaoService {
   constructor(private http: HttpClient) {}
 
   registrarPrescricao(
+    jwt: string,
     cpfPaciente: string,
     crmMedico: string,
     dataPrescricao: string,
@@ -24,6 +25,7 @@ export class PrescricaoService {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}`
       }),
     };
 
@@ -33,15 +35,32 @@ export class PrescricaoService {
   }
 
 
-  getHistoricoPrescricao(cpf: string): Observable<any> {
+  getHistoricoPrescricao(jwt: string, cpf: string): Observable<any> {
     const url = `http://localhost:3000/v1/receita/historicoPcpf/historico?cpf=${cpf}`;
-    return this.http.get(url);
+
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}` // Adicione o token de autorização Bearer
+      })
+    };
+
+    return this.http.get<any>(url, httpOptions);
   }
   
 
-  getHistoricoRemediosPrescricao(id: string): Observable<any> {
+  getHistoricoRemediosPrescricao(jwt: string, id: string): Observable<any> {
     const url = `http://localhost:3000/v1/receita/medicamentosPreceita/medicamentosReceita?id=${id}`;
-    return this.http.get(url);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}` // Adicione o token de autorização Bearer
+      })
+    };
+
+    return this.http.get(url, httpOptions);
   }
   
 }

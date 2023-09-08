@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { PrescricaoService } from '../shared/prescricao.service';
 import { ActivatedRoute } from '@angular/router';
 import { PacienteService } from '../shared/paciente.service';
+import { AuthService } from '../shared/cookie.service';
 
 import Swal from 'sweetalert2'
 
@@ -13,7 +14,8 @@ import Swal from 'sweetalert2'
 })
 export class HistoricoPacienteComponent implements OnInit {
   constructor(private router: Router, private prescricaoService: PrescricaoService,
-    private route: ActivatedRoute, private pacienteService: PacienteService,) { }
+    private route: ActivatedRoute, private pacienteService: PacienteService,
+    private authService: AuthService) { }
 
   nomePaciente: string = ""
   cpfPaciente: string = ""
@@ -28,7 +30,9 @@ export class HistoricoPacienteComponent implements OnInit {
   }
 
   getHistorico(): void {
-    this.prescricaoService.getHistoricoPrescricao(this.cpfPaciente).subscribe(
+    const jwt = this.authService.getJwt()
+
+    this.prescricaoService.getHistoricoPrescricao(jwt, this.cpfPaciente).subscribe(
       (data) => {
         this.receitas = data
       },
@@ -43,7 +47,8 @@ export class HistoricoPacienteComponent implements OnInit {
     this.route.params.subscribe((params) => {
       const cpf = params['cpf'];
       if (cpf) {
-        this.pacienteService.getPacientesPcpf(cpf).subscribe(
+        const jwt = this.authService.getJwt()
+        this.pacienteService.getPacientesPcpf(jwt, cpf).subscribe(
           (data) => {
             this.nomePaciente = data.nome
             this.cpfPaciente = data.cpf
@@ -71,7 +76,8 @@ export class HistoricoPacienteComponent implements OnInit {
 
   verMedicamentos(idReceita: string) {
     if (idReceita) {
-      this.prescricaoService.getHistoricoRemediosPrescricao(idReceita).subscribe(
+      const jwt = this.authService.getJwt()
+      this.prescricaoService.getHistoricoRemediosPrescricao(jwt, idReceita).subscribe(
         (data) => {
           let arrMedicamentos = []
           for(let p = 0; p < data.length; p++){

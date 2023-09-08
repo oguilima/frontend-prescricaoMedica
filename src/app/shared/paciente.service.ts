@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class PacienteService {
   constructor(private http: HttpClient) {}
 
-  getPacientes(cpf?: string, nome?: string, datanascimento?: string): Observable<any> {
+  getPacientes(authToken: string, cpf?: string, nome?: string, datanascimento?: string): Observable<any> {
     const url = 'http://localhost:3000/v1/paciente/filtros'; // Substitua pela URL real da sua API
 
     // Crie um objeto HttpParams para armazenar os parâmetros da consulta
@@ -26,11 +26,12 @@ export class PacienteService {
     if (datanascimento) {
       params = params.set('datanascimento', datanascimento);
     }
-
+ 
     // Defina os cabeçalhos da solicitação (se necessário)
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
+        'Authorization': `Bearer ${authToken}` //
       }),
       params: params,
     };
@@ -39,8 +40,16 @@ export class PacienteService {
     return this.http.get(url, httpOptions);
   }
 
-  getPacientesPcpf(cpf: string): Observable<any> {
+  getPacientesPcpf(jwt: string, cpf: string): Observable<any> {
+    
     const url = `http://localhost:3000/v1/paciente/${cpf}`
-    return this.http.get(url);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${jwt}` //
+      }),
+    };
+
+    return this.http.get(url, httpOptions);
   }
 }
