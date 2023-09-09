@@ -22,6 +22,9 @@ export class LoginComponent {
 
     this.authService.login(this.username, this.password, medico).subscribe(
       (response) => {
+
+        console.log(response)
+
         // Verifique se a resposta contém o JWT
         if (response && response.token) {
           // Grave o JWT nos cookies

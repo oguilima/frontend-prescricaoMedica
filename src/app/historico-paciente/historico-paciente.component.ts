@@ -80,7 +80,7 @@ export class HistoricoPacienteComponent implements OnInit {
       this.prescricaoService.getHistoricoRemediosPrescricao(jwt, idReceita).subscribe(
         (data) => {
           let arrMedicamentos = []
-          for(let p = 0; p < data.length; p++){
+          for (let p = 0; p < data.length; p++) {
             arrMedicamentos.push(data[p].nome)
           }
 
@@ -97,7 +97,8 @@ export class HistoricoPacienteComponent implements OnInit {
 
         },
         (error) => {
-          console.error('Erro ao buscar medicamentos:', error);
+          document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          this.router.navigate(['/login']);
         }
       );
     }

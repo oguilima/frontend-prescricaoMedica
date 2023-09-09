@@ -11,7 +11,16 @@ export class AuthService {
   constructor(private cookieService: CookieService, private http: HttpClient) { }
 
   isLoggedIn(): boolean {
-    // Verifica se o JWT está presente nos cookies
+    
+    const token = this.cookieService.get('jwt')
+
+    if(!token){
+      return false
+    }
+
+    
+
+
     return this.cookieService.check('jwt');
   }
 

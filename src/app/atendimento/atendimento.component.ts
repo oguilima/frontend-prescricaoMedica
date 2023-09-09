@@ -17,10 +17,10 @@ import Swal from 'sweetalert2'
   styleUrls: ['./atendimento.component.css']
 })
 export class AtendimentoComponent implements OnInit {
-  constructor(private router: Router, private prescricaoService: PrescricaoService, 
+  constructor(private router: Router, private prescricaoService: PrescricaoService,
     private cookieService: AuthService, private medicoService:
-     MedicoService, private medicamentoService: 
-     MedicamentoService, private pacienteService:
+      MedicoService, private medicamentoService:
+      MedicamentoService, private pacienteService:
       PacienteService, private route: ActivatedRoute) { }
 
   medicamentos: any[] = [];
@@ -123,11 +123,17 @@ export class AtendimentoComponent implements OnInit {
             },
             (error) => {
               console.error('Erro ao buscar medicamentos:', error);
+
+              document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+              this.router.navigate(['/login']);
             }
           );
         },
         (error) => {
           console.error('Erro ao buscar o medico:', error);
+
+          document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          this.router.navigate(['/login']);
         }
       );
 

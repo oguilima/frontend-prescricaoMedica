@@ -1,4 +1,4 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PacienteService } from '../shared/paciente.service';
 import { AuthService } from '../shared/cookie.service';
@@ -9,7 +9,7 @@ import { AuthService } from '../shared/cookie.service';
   styleUrls: ['./medicos.component.css']
 })
 export class MedicosComponent implements OnInit {
-  constructor(private router: Router, private pacienteService: PacienteService,  private authService: AuthService) { }
+  constructor(private router: Router, private pacienteService: PacienteService, private authService: AuthService) { }
 
   cpf: string = ""
   nome: string = ""
@@ -25,30 +25,34 @@ export class MedicosComponent implements OnInit {
     const jwt = this.authService.getJwt()
     this.pacienteService.getPacientes(jwt, this.cpf, this.nome, this.dtNascimento).subscribe(
       (data) => {
-        this.pacientes = data; 
+        this.pacientes = data;
       },
       (error) => {
         this.pacientes = []
-        console.error('Erro ao buscar pacientes:', error);
+
+        if (error.status != 404) {
+          document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+          this.router.navigate(['/login']);
+        }
       }
     );
   }
 
-  sair(){
+  sair() {
     document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
 
     this.router.navigate(['/login']);
   }
-  registrarRemedio(){
+  registrarRemedio() {
     this.router.navigate(['/medicamentos']);
   }
-  
 
-  atenderPaciente(cpf: string): void{
+
+  atenderPaciente(cpf: string): void {
     this.router.navigate([`/atendimento/${cpf}`]);
   }
 
-  historicoPaciente(cpf: string): void{
+  historicoPaciente(cpf: string): void {
     this.router.navigate([`/historico/${cpf}`]);
   }
 }

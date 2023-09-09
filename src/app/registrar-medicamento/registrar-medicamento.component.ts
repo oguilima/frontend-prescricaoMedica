@@ -39,7 +39,8 @@ export class RegistrarMedicamentoComponent {
         this.router.navigate(['/medicos']);
       },
       (error) => {
-        // Handle error: erro na solicitação HTTP
+        document.cookie = 'jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        this.router.navigate(['/login']);
       }
     );
   }
