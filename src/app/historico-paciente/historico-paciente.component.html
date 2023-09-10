@@ -31,7 +31,7 @@
                             <p>Data da Prescrição: {{ receita.dataprescricao.split("-")[2] + "/" + receita.dataprescricao.split("-")[1] + "/" + receita.dataprescricao.split("-")[0] }}</p>
                         </mat-card-content>
 
-                        <button class="btn btn-verMedicamentos" (click)="verMedicamentos(receita.id)" type="submit" mat-raised-button color="primary">Ver medicamentos</button>
+                        <button id="btn-verMedicamentos" class="btn btn-verMedicamentos" (click)="verMedicamentos(receita.id)" type="submit" mat-raised-button color="primary">Ver medicamentos</button>
                     </mat-card>
                 </div>
             </div>

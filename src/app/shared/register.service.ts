@@ -16,7 +16,8 @@ export class RegisterService {
             nome: name,
             datanascimento: dataNascimento
         };
-
+        
+        console.log(credentials)
 
         const httpOptions = {
             headers: new HttpHeaders({

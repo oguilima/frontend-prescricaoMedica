@@ -24,6 +24,8 @@ import {MatCardModule} from '@angular/material/card';
 import { AtendimentoComponent } from './atendimento/atendimento.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { HistoricoPacienteComponent } from './historico-paciente/historico-paciente.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 
 @NgModule({
@@ -49,7 +51,9 @@ import { HistoricoPacienteComponent } from './historico-paciente/historico-pacie
     HttpClientModule,
     MatToolbarModule,
     MatCardModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]

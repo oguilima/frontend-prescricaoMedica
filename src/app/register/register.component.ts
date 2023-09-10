@@ -24,7 +24,6 @@ export class RegisterComponent {
 
     this.registerService.register(this.documento, this.nome, this.password, this.dtNascimento, medico).subscribe(
       (response) => {
-        // Verifique se a resposta contém o JWT
         if (response) {
 
           Swal.fire(

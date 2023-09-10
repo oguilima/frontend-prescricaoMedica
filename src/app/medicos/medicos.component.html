@@ -1,5 +1,5 @@
 <mat-toolbar id="toolbar">
-  <button class="btn" type="submit" (click)="registrarRemedio()" mat-raised-button color="primary">Registrar
+  <button class="btn" id="registrarRemedio" type="submit" (click)="registrarRemedio()" mat-raised-button color="primary">Registrar
     remédio</button>
   <button class="btn" type="submit" (click)="sair()" mat-raised-button color="warn">Sair</button>
 </mat-toolbar>
@@ -40,8 +40,8 @@
           </div>
           <div class="card-dir">
             <div class="btn-group">
-              <button class="btn-atendimento" type="submit" (click)="historicoPaciente(paciente.cpf)" mat-raised-button color="warn">Ver histórico</button>
-              <button class="btn-atendimento" type="submit" (click)="atenderPaciente(paciente.cpf)" mat-raised-button
+              <button class="btn-atendimento" type="submit" id="btnAtendimento" (click)="historicoPaciente(paciente.cpf)" mat-raised-button color="warn">Ver histórico</button>
+              <button class="btn-atendimento" type="submit" id="btnAtendimento" (click)="atenderPaciente(paciente.cpf)" mat-raised-button
                 color="primary">Atender</button>
             </div>
           </div>
